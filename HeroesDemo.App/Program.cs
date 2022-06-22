@@ -72,7 +72,8 @@ namespace HeroesDemo.App
                 Console.WriteLine($"{hero.Name} победитель!");
             }
         }
-
+        
+        /*
         static Race CreateHero(TypeHero typeHero, string name) =>
             typeHero switch {
                 TypeHero.Human => new Human(name, new Axe()),
@@ -80,6 +81,19 @@ namespace HeroesDemo.App
                 TypeHero.Unknown => throw new ArgumentOutOfRangeException(nameof(typeHero), typeHero, null),
                 _ => throw new ArgumentOutOfRangeException(nameof(typeHero), typeHero, null)
             };
+        */
+        static Race CreateHero(TypeHero typeHero, string name)
+        {
+            switch(typeHero) {
+                case TypeHero.Human:
+                    return new Human(name, new Axe());
+                case TypeHero.Elf:
+                    return new Elf(name, new Axe());
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(typeHero), typeHero, null);
+            }
+        }
+        
 
         static void ShowHeroInfo(Race hero) => Console.WriteLine($"NAME: {hero.Name}, HEALTH: {hero.Health}");
     }
